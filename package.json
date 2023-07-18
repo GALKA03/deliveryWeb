@@ -1,32 +1,35 @@
 {
-  "name": "del",
+  "name": "my",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "test": "jest"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@paypal/react-paypal-js": "^7.8.3",
+    "@google-pay/button-react": "^3.0.9",
+    "@paypal/react-paypal-js": "^8.0.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@svgr/webpack": "^8.0.1",
     "autoprefixer": "10.4.14",
-    "axios": "^1.4.0",
-    "mongoose": "^7.2.2",
-    "next": "13.4.3",
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.5.0",
+    "eslint": "8.42.0",
+    "eslint-config-next": "13.4.5",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.11.1",
+    "next": "^13.4.5",
     "next-auth": "^4.22.1",
     "next-redux-wrapper": "^8.1.0",
-    "postcss": "8.4.23",
+    "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-redux": "^8.0.7",
+    "react-redux": "^8.1.1",
     "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
+    "swr": "^2.1.5",
     "tailwindcss": "3.3.2"
-  },
-  "devDependencies": {
-    "jest": "^29.5.0"
   }
 }

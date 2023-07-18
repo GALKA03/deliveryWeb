@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* body {
+  background: rgb(241, 154, 88);
+    background: radial-gradient(circle, rgba(241, 154, 88, 0.9108893557422969) 0%, rgba(221, 221, 3, 0.25262605042016806) 96%);
+} */
+a{
+  text-decoration: none;
+  color: inherit;
+}
+.theme{
+  transition: 1s all ease;
+}
+.light{
+background: rgb(241, 154, 88);
+  background: radial-gradient(circle, rgba(241, 154, 88, 0.9108893557422969) 0%, rgba(221, 221, 3, 0.25262605042016806) 96%);
+color:#582403;
+}
+.dark{
+  background: rgb(146, 36, 36);
+    background: radial-gradient(circle, rgba(146, 36, 36, 0.9585084033613446) 0%, rgba(13, 2, 4, 1) 100%);
+color: rgb(254, 194, 98);
+  }
