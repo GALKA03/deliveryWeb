@@ -12,17 +12,18 @@ export async function generateMetadata({ params }) {
     description: pizza.desc,
   };
 }
-const PizzasId = async ({ params }) => {
+
+const PizzasId =  async({ params }) => {
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(params.prices);
   const dispatch = useDispatch();
   const quantityRef = useRef(1);
   const pizza = await getPizzaId(params.id);
-  //  console.log("pizza", pizza);
+    console.log("pizza", pizza);
   // console.log("params", params);
-  const changePrice = (number) => {
-    setPrice(price + number);
-  };
+  // const changePrice = (number) => {
+  //   setPrice(price + number);
+  // };
 
   const handleClick = () => {
   const selectedQuantity = parseInt(quantityRef.current.value, 10);
