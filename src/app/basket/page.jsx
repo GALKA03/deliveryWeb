@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation";
-import useSWR from "swr";
+import { redirect } from 'next/navigation'
 import { useDispatch, useSelector } from "react-redux";
 import { selectPiz } from "@/redux/pizzas/pizzaSelector";
 import styles from "./page.module.css";
@@ -21,26 +21,34 @@ const Basket = () => {
   const [open, setOpen] = useState(false);
   const [cash, setCash] = useState(false);
 
-  const session = useSession();
-  const router = useRouter();
+
+
+  // const session = useSession();
+  // const router = useRouter();
   const pizzaSelect = useSelector(selectPiz);
 
-  const { data, error, mutate, isLoading } = useSWR(
-    session?.data?.user ? `/basket?username=${session.data.user.name}` : null,
-    fetcher,
-    { revalidateOnFocus: false }
-  );
+//   const { data, error, mutate, isLoading } = useSWR(
+//     session?.data?.user ? `/basket?username=${session.data.user.name}` : null,
+//     fetcher,
+//     { revalidateOnFocus: false }
+//   );
 
-  if (session.status === "loading" || isLoading) {
-    return <p>Loading...</p>;
-  }
+//   if (session.status === "loading" || isLoading) {
+//     return <p>Loading...</p>;
+//   }
 
-  if (session.status === "unauthenticated") {
-    router?.push("/basket/login");
-  }
-
+//   if (session.status === "unauthenticated") {
+//     router?.push("/basket");
+//   }
+const { data: session } = useSession({
+        required: true,
+        onUnauthenticated() {
+            redirect('/api/auth/login?callbackUrl=/client')
+        }
+  })
+if (!session?.user) return
   
-if (session.status === "authenticated") {
+// if (session.status === "authenticated") {
     return (
       <div className={styles.container}>
         <div className={styles.left}>
@@ -123,6 +131,6 @@ if (session.status === "authenticated") {
       </div>
     )
   }
-};
+// };
 
 export default Basket;

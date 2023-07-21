@@ -19,8 +19,11 @@ export const POST = async (request) => {
   try {
     await newUser.save();
     return new NextResponse(newUser, {
-      status: 201,
-    });
+      message: "User registered successfully",
+    }),
+     {
+        status: 201,
+      };
   } catch (err) {
     return new NextResponse(err.message, {
       status: 500,

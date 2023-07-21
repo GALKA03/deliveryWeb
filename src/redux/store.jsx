@@ -20,8 +20,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, cardReducer);
 export const store = configureStore({
   reducer: {
-    pizzaCard: cardReducer,
-    session: persistedReducer,
+    pizzaCard: persistedReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

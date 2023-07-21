@@ -8,19 +8,19 @@ import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { selectPizzasQuantity } from "@/redux/pizzas/pizzaSelector";
 import Login from "@/app/admin/(auth)/login/page";
-
+import  { User } from "next-auth";
 
 
 const Nav = () => {
-  const router = useRouter();
-  const session = useSession();
+
+  // const session = useSession();
   const [isDarkMode, setDarkMode] = useState(false); // State for dark mode
   const quantity = useSelector(selectPizzasQuantity);
  const [isLoggedIn, setIsLoggedIn] = useState(false); // St
 // const [isLoggout, setIsLoggout] = useState(true);
 //  const token = localStorage.getItem("token") === "true";
   const isHomePage = router.pathname === "/";
-  
+  const user= User()
   const links = [
     { id: 1, title: "blogposts", url: "/blogposts" },
     { id: 2, title: "portfolio", url: "/portfolio" },
@@ -31,6 +31,9 @@ const Nav = () => {
     //   url: "/contact",
     // },
   ];
+
+    const router = useRouter();
+ 
 useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token); // Set isLoggedIn to true if token exists in localStorage
@@ -61,7 +64,19 @@ const handleLoginClick = async () => {
     router.replace("/");
   };
 
+ const { data: session } = useSession({
+        required: true,
+        onUnauthenticated() {
+            redirect('/api/auth/signin?callbackUrl=/client')
+        }
+ })
+  
+      // if (session?.user.role !== "admin"
+    //     && session?.user.role !== "manager") {
+    //     return <h1 className="text-5xl">Access Denied</h1>
+    // }
 
+    // 
  
   return (
     <div className="p-10 flex justify-between items-center">
@@ -97,20 +112,24 @@ const handleLoginClick = async () => {
         ))}
       </div>
       <div className="relative cursor-pointer">
-       {session.status === "authenticated" && (
+       {session.status === "authenticated" && ( 
+          <div>
+          <p>{user.role}</p>
           <button className="" onClick={signOut}>
-            Logout
-          </button>
+            Logout User
+            </button>
+          </div>
         )}
         <Link href="/basket" passHref>
           <div className=" bg-transparent rounded-full p-4 w-30 h-30">
-            <ShoppingBasket />
+            <ShoppingBasket/>
           </div>
           <span className="absolute  top-3 right-2 text-[13px] bg-red-600 h-[18px] w-[18px] rounded-full grid place-items-center text-white">
             {quantity}
           </span>
         </Link>
       </div>
+
     </div>
   );
 };

@@ -32,7 +32,7 @@ const [isAdmin, setIsAdmin] = useState(false); // Set the isAdmin flag based on 
   <div className="flex relative min-h-screen  items-center justify-between ">
       <NavAside className="w-2/4"/>
       <div className="  w-2/4 hidden sm:block ">
-      {!isAdmin && <AddButton className="absolute min-w-min"/> } 
+      {/* {!isAdmin && <AddButton className="absolute min-w-min"/> }  */}
         </div>
         </div>
     </main>
