@@ -40,13 +40,13 @@ const Basket = () => {
 //   if (session.status === "unauthenticated") {
 //     router?.push("/basket");
 //   }
-const { data: session } = useSession({
-        required: true,
-        onUnauthenticated() {
-            redirect('/api/auth/login?callbackUrl=/client')
-        }
-  })
-if (!session?.user) return
+// const { data: session } = useSession({
+//         required: true,
+//         onUnauthenticated() {
+//             redirect('/api/auth/login?callbackUrl=/client')
+//         }
+//   })
+// if (!session?.user) return
   
 // if (session.status === "authenticated") {
     return (

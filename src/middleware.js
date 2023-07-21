@@ -12,9 +12,9 @@ export default withAuth(
 
         if (request.nextUrl.pathname.startsWith("/basket")
             && request.nextauth.token?.role !== "admin"
-            && request.nextauth.token?.role !== "manager") {
+            && request.nextauth.token?.role !== "user") {
             return NextResponse.rewrite(
-                new URL("/denied", request.url)
+                new URL("/basket", request.url)
             )
         }
     
