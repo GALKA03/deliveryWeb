@@ -19,6 +19,30 @@ const cardSlice = createSlice({
       state.quantity += Number(action.payload.quantity)
       state.total += action.payload.prices * Number(action.payload.quantity)
     },
+       deletePizza: (state, action) => {
+      const pizzaIndex = state.pizzas.findIndex(
+        (pizza) => pizza._id === action.payload._id
+      );
+      if (pizzaIndex > -1) {
+        const deletedPizza = state.pizzas.splice(pizzaIndex, 1);
+        state.quantity -= Number(deletedPizza[0].quantity);
+        state.total -= deletedPizza[0].prices * Number(deletedPizza[0].quantity);
+      }
+    },
+    },
+    updatePizza: (state, action) => {
+      const { id, quantity } = action.payload;
+      const pizzaToUpdate = state.pizzas.find((pizza) => pizza.id === id);
+      if (pizzaToUpdate) {
+        state.total -= pizzaToUpdate.prices * Number(pizzaToUpdate.quantity);
+        state.total += pizzaToUpdate.prices * Number(quantity);
+        pizzaToUpdate.quantity = quantity;
+        state.quantity = state.pizzas.reduce(
+          (totalQuantity, pizza) => totalQuantity + Number(pizza.quantity),
+          0
+        );
+      }
+    },
     reset: (state) => {
       state.quantity = 0;
       state.pizzas = [];
@@ -31,7 +55,8 @@ const cardSlice = createSlice({
     state.pizzas[pizzaIndex].quantity = action.payload.quantity;
   }
 }
-  }
+  
 });
-export const{addPizza, reset, setQuantity}= cardSlice.actions
+export const{addPizza, reset, setQuantity, deletePizza,
+  updatePizza}= cardSlice.actions
 export default cardSlice.reducer;

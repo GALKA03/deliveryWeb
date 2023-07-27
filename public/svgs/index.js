@@ -1,6 +1,6 @@
 export { default as ShoppingBasket } from "./ShoppingBasket.svg"
-// export { default as Instagram } from "./Instagram.svg"
-// export { default as Linkedin } from "./Linkedin.svg"
+ export { default as DeleteBtn } from "./DeleteBtn.svg"
+ export { default as UpdateBtn } from "./UpdateBtn.svg"
 // export { default as Twitter } from "./Twitter.svg"
 // export { default as MapPin } from "./MapPin.svg"
 // export { default as MenuMobil } from "./MenuMobil.svg"

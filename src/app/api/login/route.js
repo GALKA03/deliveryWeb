@@ -4,15 +4,15 @@ import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
-  const { username, password } = await request.json();
+  const { email, password } = await request.json();
   try {
     const hashedPassword = await bcrypt.hash(password, 10); // Hash the provided password
     if (
-      username === process.env.ADMIN_USERNAME &&
+      email === process.env.ADMIN_EMAIL &&
       (await bcrypt.compare(process.env.ADMIN_PASSWORD, hashedPassword))
     ) {
       const payload = {
-        username: username,
+        email: email,
         isAdmin: true, // Set the isAdmin flag based on the user's admin status
       };
 
