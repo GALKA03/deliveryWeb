@@ -8,26 +8,26 @@ import { useRouter } from "next/navigation";
 
  
 const Basket = () => {
-const { data: session, status } = useSession()
-  console.log('session bascP', session)
-  console.log('stat BaskP', status)
-  if (status === "loading") {
-    return <p>Loading...</p>
+  const { data: session, status } = useSession();
+  const router = useRouter()
+  if (session.user.role === "admin") {
+    return (
+      <>
+        <h1>Admin page</h1>
+        <p>You can't view this page because you are an Admin.</p>
+      </>
+    );
+  } else if (session.user.role === "user") {
+    return (
+      <section>
+        <BasketCard />
+      </section>
+    );
   }
-
-  if (status === "unauthenticated") {
-    return <p>Access Denied</p>
-  }
-  
-  return (
-    <section>
-      <BasketCard  />
-    </section>
-    )
-  
-  
 }
-// };
+   
+  
+
 
 export default Basket;
 
