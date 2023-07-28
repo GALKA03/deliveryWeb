@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import getAllOrders from "../../app/getLib/getAllOrders";
 import getPizzas from "../../app/getLib/getAllPizzas";
-import { useSession } from "next-auth/react"
-import { useRouter } from "next/navigation";
-
+// import { useSession } from "next-auth/react"
+// import { useRouter } from "next/navigation";
+import React from 'react';
 
 const AdminTabl = () => {
       const [pizzaList, setPizzaList] = useState([]);

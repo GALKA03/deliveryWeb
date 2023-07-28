@@ -15,8 +15,9 @@ const Nav = () => {
   const { data: session, status } = useSession();
 console.log('sessionNav', status, session)
   const isHomePage = router.pathname === "/";
-  const isBasketPage = router.pathname === "/basket";
-  const isAdminPage = router.pathname ==="/admin"
+  // const isBasketPage = router.pathname === "/basket";
+  // const isAdminPage = router.pathname ==="/admin"
+    
   
  const handleLogout = async () => {
     try {

@@ -4,7 +4,7 @@ import { Inter, Roboto, Poppins } from 'next/font/google'
 import Footer from '@/components/Footer/Footer'
 import Nav from '@/components/navbar/Nav'
 import { ThemeProvider } from '@/context/ThemeContext'
-import AuthProvider from '@/components/AuthProvider/AuthProvider'
+import GlobalProvider from '@/components/GlobalProvider/AuthProvider'
 
 import Add from '@/components/Add/Add'
 import CustomPersistGate from '@/redux/PersistGate'
@@ -25,9 +25,10 @@ export default function RootLayout({ children,session }) {
     <html lang="en">
       <body className={inter.className}>
        
-        <ThemeProvider>
-          <AuthProvider session={session}>
-            <CustomPersistGate>
+        {/* <ThemeProvider> */}
+          <GlobalProvider session={session}>
+           <ThemeProvider>
+          <CustomPersistGate>
         <div className='max-w-screen-xl min-h-screen my-0 mx-auto py-0'>
         <Nav />
         
@@ -35,9 +36,10 @@ export default function RootLayout({ children,session }) {
           <Footer />
                 </div>
             {!close&&<Add/>}
-              </CustomPersistGate>
-            </AuthProvider>
-          </ThemeProvider>
+            </CustomPersistGate>
+            </ThemeProvider>
+            </GlobalProvider>
+          {/* </ThemeProvider> */}
         
       </body>
     </html>
