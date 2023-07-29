@@ -9,7 +9,8 @@ import { parseCallbackUrl } from "@/helpers/helpers";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-const [error, setError] = useState(false);
+const [username, setUsername] = useState(""); 
+  const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const router = useRouter();
@@ -48,7 +49,7 @@ const [error, setError] = useState(false);
             placeholder="username"
             required
             className="p-5 border-2 border-gray-300 rounded-lg outline-none text-gray-400 text-lg font-bold"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
@@ -88,6 +89,9 @@ const [error, setError] = useState(false);
         <span className="text-gray-400 text-center">- OR -</span>
         <Link className="underline text-center text-gray-600 hover:text-gray-400" href="/auth/register">
           Create new account
+           </Link>
+           <Link className="underline text-center text-gray-600 hover:text-gray-400" href="/">
+          Go Home
            </Link>
          </form>
        </div>

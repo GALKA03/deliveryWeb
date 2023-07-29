@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const PizzasSchema = new Schema({
+const SushiSchema = new Schema({
   title: {
     type: String,
     required: [true, "Title is required"],
@@ -34,15 +34,15 @@ const PizzasSchema = new Schema({
 { timestamps: true }
 );
 
-let PizzasModel;
+let SushiModel;
 
 try {
-  PizzasModel = mongoose.model("Pizzas");
+  SushiModel = mongoose.model("Sushi");
 } catch (error) {
-  PizzasModel = mongoose.model("Pizzas", PizzasSchema);
+  SushiModel = mongoose.model("Sushi",SushiSchema);
 }
 
-export default PizzasModel;
+export default SushiModel;
 
 
 
