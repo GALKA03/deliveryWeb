@@ -13,7 +13,7 @@ const Nav = () => {
   const [isDarkMode, setDarkMode] = useState(false);
   const quantity = useSelector(selectPizzasQuantity);
   const { data: session, status } = useSession();
-console.log('sessionNav', status, session)
+// console.log('sessionNav', status, session)
   const isHomePage = router.pathname === "/";
   // const isBasketPage = router.pathname === "/basket";
   // const isAdminPage = router.pathname ==="/admin"
@@ -29,30 +29,7 @@ console.log('sessionNav', status, session)
       console.log("Logout error:", error);
     }
   };
-  // const { data: session } = useSession({
-  //   required: true,
-  //   onUnauthenticated() {
-  //     router.push('/api/auth/signin?callbackUrl=/client');
-  //   },
-  // });
 
-    //  {
-    //   id: 5,
-    //   title: "contact",
-    //   url: "/contact",
-    // },
-
-  //  const { data: session } = useSession({
-  //     required: true,
-  //     onUnauthenticated() {
-  //       router.push('/api/auth/signin?callbackUrl=/client');
-  //     },
-  //   });
-
-  // useEffect(() => {
-  //     const token = localStorage.getItem("token");
-  //     setIsLoggedIn(!!token); // Set isLoggedIn to true if token exists in localStorage
-  //   }, []);
   const toggleDarkMode = () => {
     setDarkMode(!isDarkMode);
   };
@@ -68,24 +45,10 @@ console.log('sessionNav', status, session)
     return className;
   };
 
-  // const handleLoginClick = async () => {
-  //    router.push("/admin/login"); // Redirect to the login/admin page
 
-  // };
-  // const handleLoginClick = async () => {
-  //   router.push("/admin/login"); // Redirect to the login/admin page
-  // };
-// const handleAdminLogout = () => {
-//   // Implement the logout logic for admins here
-//   // For example, you can use the same signOut() function from next-auth/react
-//   signOut();
-
-//   // After signing out, redirect the admin to the admin login page
-//   router.replace("/admin/login");
-// };
 
   const userRole = session?.user?.role;
-  console.log('userRole Nav', userRole);
+  // console.log('userRole Nav', userRole);
    const isLoggedIn = session?.status === "authenticated";
   return  (
     <div className="p-10 flex flex-col  items-center">

@@ -9,7 +9,6 @@ const { Schema } = mongoose;
     {
       name: {
         type: String,
-        unique: true,
         required: true,
       },
       email: {
@@ -21,11 +20,6 @@ const { Schema } = mongoose;
         type: String,
         required: true,
       },
-    //     role: {
-    //   type: String, // Assuming the role is represented as a string
-    //   required: true,
-    //   default: "user", // Default role is "admin"
-    // },
     role: {
       type: String,
       enum: ["user", "admin"], // Define the roles directly within the enum

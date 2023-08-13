@@ -22,13 +22,11 @@ const PizzasSchema = new Schema({
   img: {
     type: String,
   },
-  extraOptions: {
-    type: [{
-      text: { type: String, default: "standart", },
-      price:{type:Number, default: 0,},
-    },
-
-    ]
+   shop: {
+    type: String, // Store the selected shop name here (e.g., "Pizzas," "Sushi," or "Wine")
+  },
+  public_id: {
+    type: String, // Store the public_id from Cloudinary here
   }
 },
 { timestamps: true }

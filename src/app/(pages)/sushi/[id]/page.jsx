@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
-import getPizzaId from "@/app/getLib/getPizzaId";
+import { getSushiId } from "@/app/getLib/fetchSushi";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { useState, useRef } from "react";
 import { addPizza } from "@/redux/pizzas/cardSlice";
 export async function generateMetadata({ params }) {
-  const pizza = await getPizzaId(params.id);
+  const pizza = await getSushiId(params.id);
   return {
     title: pizza.title,
     description: pizza.desc,

@@ -6,7 +6,7 @@ import Nav from '@/components/navbar/Nav'
 import { ThemeProvider } from '@/context/ThemeContext'
 import GlobalProvider from '@/components/GlobalProvider/AuthProvider'
 
-import Add from '@/components/Add/Add'
+import Add from '@/components/AddButton/AddButton'
 import CustomPersistGate from '@/redux/PersistGate'
 import { useState } from 'react'
 
