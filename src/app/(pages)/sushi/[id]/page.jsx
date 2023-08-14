@@ -1,47 +1,47 @@
 "use client";
 import Link from "next/link";
-import { getSushiId } from "@/app/getLib/fetchSushi";
+import { getSushiId, getSushi } from "@/app/getLib/fetchSushi";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { useState, useRef } from "react";
-import { addPizza } from "@/redux/pizzas/cardSlice";
+import { addSushi } from "@/redux/pizzas/cardSlice";
+
 export async function generateMetadata({ params }) {
-  const pizza = await getSushiId(params.id);
+  const sushi = await getSushiId(params.id);
+  console.log('sushiId',sushi )
   return {
-    title: pizza.title,
-    description: pizza.desc,
+    title: sushi.title,
+    description: sushi.desc,
   };
 }
 
-const PizzasId =  async({ params }) => {
+const SushiById =  async({ params }) => {
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(params.prices);
   const [userToUpdate, setUserToUpdate] = useState(null);
   const dispatch = useDispatch();
   const quantityRef = useRef(1);
-  const pizza = await getPizzaId(params.id);
-    // console.log("pizza", pizza);
-  // console.log("params", params);
-  // const changePrice = (number) => {
-  //   setPrice(price + number);
-  // };
 
-  const handleClick = () => {
+  const sushi = await getSushiId(params.id);
+
+ console.log('sushiById', sushi)
+
+    const handleClick = () => {
   const selectedQuantity = parseInt(quantityRef.current.value, 10);
-  dispatch(addPizza({ ...pizza, price, quantity: selectedQuantity }));
+  dispatch(addSushi({ ...sushi, price, quantity: selectedQuantity }));
   quantityRef.current.value = 1; // Reset the quantity input after adding to cart
 };
 
   return (
     <div className="flex w-100 items-center justify-around py-10">
-      <Image src={pizza.img} alt="Picture" width={400} height={400} />
+      <Image src={sushi.img} alt="Picture" width={400} height={400} />
 
       <div className="flex flex-col max-w-fit">
         <h2 className="underline text-xl font-semibold text-left mb-4">
-          {pizza.title}
+          {sushi.title}
         </h2>
-        <p className="ordinal text-lg mb-4">Price: {pizza.prices}€</p>
-        <p className="mb-4">{pizza.desc}</p>
+        <p className="ordinal text-lg mb-4">Price: {sushi.prices}€</p>
+        <p className="mb-4">{sushi.desc}</p>
         <div className="flex flex-col mb-4">
           <input
             type="number"
@@ -63,4 +63,4 @@ const PizzasId =  async({ params }) => {
     </div>
   );
 };
-export default PizzasId;
+export default SushiById;

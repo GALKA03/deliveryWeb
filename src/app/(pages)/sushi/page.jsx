@@ -1,16 +1,17 @@
 
-import { getSushi } from "@/app/getLib/fetchSushi";
+import { getSushi, getSushiId  } from "@/app/getLib/fetchSushi";
 import Link from "next/link";
 import Image from "next/image";
 
 
 const Sushi = async() => {
 const sushi= await getSushi()
-console.log('sushi', sushi)
+  console.log('sushi', sushi)
+ 
     return (
    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
       <div className="grid grid-cols-3 gap-4 text-center">
-        {pizzas.map(({ img, desc, _id, prices, title }) => (
+        {sushi.map(({ img, desc, _id, prices, title }) => (
           <Link key={_id} href={`/sushi/${_id}`} as={`/sushi/${_id}`} className="border-2 border-yellow-700">
 
               <div className="p-4">
@@ -33,4 +34,5 @@ console.log('sushi', sushi)
       </div>
     </div>
   );
-};Sushi
+};
+export default Sushi

@@ -3,7 +3,7 @@ export const getSushi=async()=> {
   const res = await fetch("http://localhost:3000/api/sushi", {
       next: {revalidate:10},
   });
-
+// console.log("res",res)
     if (!res.ok) {
        return {
       notFound: true,
@@ -18,7 +18,7 @@ export const getSushiId = async (id) => {
     const res = await fetch(`http://localhost:3000/api/sushi/${id}`, {
         cache: "no-store",
     });
-
+  console.log('res', res)
     if (!res.ok) {
         return {
             notFound: true,

@@ -3,6 +3,7 @@ import dbConnect from "@/utils/db"
 import SushiModel from "@/models/Sushi";
 
 export async function GET(request) {
+  
   try {
     // Connect to the database
     await dbConnect();

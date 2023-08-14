@@ -10,7 +10,7 @@ import Add from '@/components/AddButton/AddButton'
 import CustomPersistGate from '@/redux/PersistGate'
 import { useState } from 'react'
 
-const inter = Inter({ subsets: ['latin'] })
+ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',

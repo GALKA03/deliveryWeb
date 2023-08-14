@@ -1,20 +1,25 @@
 import { NextResponse } from "next/server"
-import dbConnect from "@/utils/db"
-import SushiModel from "../../../../models/Pizzas"
+import dbConnect from "@/utils/db";
+import SushiModel from "../../../../models/Sushi"
 
 
 export const GET = async (request, { params }) => {
   const { id } = params;
-
+// console.log('params Sushi', params)
   try {
-    await dbConnect();
+  await dbConnect();
 
-    const sush = await SushiModel.findById(id);
-
-    return new NextResponse(JSON.stringify(sush), { status: 200 });
-  } catch (err) {
-    return new NextResponse("Database Error", { status: 500 });
+  const sushi = await SushiModel.findById(id);
+// console.log('sushiApi',sushi)
+  if (!sushi) {
+    return new NextResponse("Sushi not found", { status: 404 });
   }
+
+  return new NextResponse(JSON.stringify(sushi), { status: 200 });
+} catch (err) {
+  console.error("Error fetching sushi:", err);
+  return new NextResponse("Database Error", { status: 500 });
+}
 };
 
 export const DELETE = async (request, { params }) => {
@@ -25,7 +30,7 @@ export const DELETE = async (request, { params }) => {
 
     await SushiModel.findByIdAndDelete(id);
 
-    return new NextResponse("Pizza has been deleted", { status: 200 });
+    return new NextResponse("Sushi has been deleted", { status: 200 });
   } catch (err) {
     return new NextResponse("Database Error", { status: 500 });
   }
